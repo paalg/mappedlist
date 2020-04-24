@@ -5,20 +5,23 @@
  * keys are the same as the ID for the corresponding value. Only strings are allowed
  * for keys and values in this version.
  *
- * This is the first version that is not optimized. Currently this code is used for
- * small data sets.
+ * This is the first version that is not optimized.
  *
  * @author Pål Gjerde Gammelsæter
  * @link https://github.com/paalg/mappedlist
- * @version 0.1.0
+ * @version 0.1.1
  * @beta
  */
 class MList {
 
-    /** Internal array of the values */
+    /**
+     * Array with values. IDs in data and keys match.
+     */
     private data:string[] = [];
 
-    /** Internal array of keys */
+    /**
+     * Array with keys. IDs in data and keys match.
+     */
     private keys:string[] = [];
 
 
@@ -26,14 +29,20 @@ class MList {
      * Add element to the list
      * @param key
      * @param value
+     * @throws Error If you try to used a key that is already used
      */
     public add(key:string, value:string) {
-        // add value to list and get the id it got
-        this.data.push(value);
-        let id = this.data.length-1; // always length - 1
+        if (this.has(key)) {
+            throw new Error("Key already exists");
+        }
+        else {
+            // add value to list and get the id it got
+            this.data.push(value);
+            let id = this.data.length - 1; // always length - 1
 
-        // add key to other list with reference
-        this.keys[id] = key;
+            // add key to key list with same ID
+            this.keys[id] = key;
+        }
     }
 
     /**
@@ -60,7 +69,7 @@ class MList {
      */
     public has(key:string):boolean {
         let id = this.keys.indexOf(key);
-        return id !== -1; // if not -1, then true, else false
+        return id !== -1; // if not -1, then true
     }
 
 }

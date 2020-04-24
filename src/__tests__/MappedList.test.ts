@@ -6,6 +6,13 @@ list.add("1", "Israel");
 list.add("2", "Spain");
 list.add("3", "England");
 
+// Test adding with key already used
+test("add3", ()=> {
+    expect(()=>{
+        list.add("3", "Norway");
+    }).toThrow()
+});
+
 // Test getter
 test("get1", ()=>{
     expect(list.get("1")).toBe("Israel");
