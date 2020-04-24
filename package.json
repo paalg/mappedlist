@@ -1,0 +1,44 @@
+{
+  "name": "mappedlist",
+  "version": "0.1.0",
+  "author": "Pål Gjerde Gammelsæter",
+  "description": "A mapped list like arrays are in PHP. Supporting only string keys and values at the moment.",
+  "license": "MIT",
+  "main": "lib/MappedList.js",
+  "types": "lib/MappedList.d.ts",
+  "scripts": {
+    "test": "jest --config jestconfig.json",
+    "build": "tsc",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "lint": "tslint -p tsconfig.json",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paalg/mappedlist.git"
+  },
+  "files": [
+    "lib/**/*"
+  ],
+  "keywords": [
+    "mapped",
+    "list"
+  ],
+  "bugs": {
+    "url": "https://github.com/paalg/mappedlist/issues"
+  },
+  "homepage": "https://github.com/paalg/mappedlist#readme",
+  "devDependencies": {
+    "@types/jest": "25.2.1",
+    "jest": "25.4.0",
+    "prettier": "2.0.5",
+    "ts-jest": "25.4.0",
+    "tslint": "6.1.1",
+    "tslint-config-prettier": "1.18.0",
+    "typescript": "3.8.3"
+  }
+}

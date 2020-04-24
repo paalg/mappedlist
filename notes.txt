@@ -1,0 +1,10 @@
+Notes for developers:
+
+Information about NPM modules:
+https://www.npmjs.com/package/npm-package-example
+
+Example of typescript project in npm:
+https://github.com/jasonsjones/singly-linked-list/blob/master/src/index.ts
+
+A nice guide I have been using:
+https://itnext.io/step-by-step-building-and-publishing-an-npm-typescript-package-44fe7164964c
