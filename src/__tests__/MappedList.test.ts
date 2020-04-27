@@ -1,6 +1,8 @@
 import { MappedList } from '../MappedList';
 
-// Create the object and add data to it
+// ----------------------------
+// Create the object and add data to it for the first part of testing
+// ----------------------------
 let list = new MappedList();
 list.add("1", "Israel");
 list.add("2", "Spain");
@@ -71,3 +73,37 @@ test("length3", ()=>{
     expect(list.length()).toBe(0);
 });
 
+// ---------------------------
+// Testing searching for value
+// ---------------------------
+
+// Get first occurrence of Norway
+test("getkey1", ()=>{
+    // Add new data first
+    list.add("no", "Norway");
+    list.add("se", "Sweden");
+    list.add("nor", "Norway");
+    list.add("dk", "Denmark");
+    list.add("no_bm", "Norway");
+    list.add("il", "Israel");
+    expect(list.getKey("Norway")).toBe("no")
+});
+// Re-run will return same key
+test("getkey2", ()=>{
+    expect(list.getKey("Norway")).toBe("no")
+});
+// Run with offset -1 searches after previous value
+test("getkey3", ()=>{
+    expect(list.getKey("Norway", -1)).toBe("nor")
+});
+// Run with offset -1 searches after previous value
+test("getkey4", ()=>{
+    expect(list.getKey("Norway", -1)).toBe("no_bm")
+});
+test("getkey5", ()=>{
+    expect(list.getKey("Israel")).toBe("il")
+});
+// Getting av value that does not exist will return "-1"
+test("getkey6", ()=>{
+    expect(list.getKey("Great Britain")).toBe("-1")
+});

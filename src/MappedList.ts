@@ -9,7 +9,7 @@
  *
  * @author Pål Gjerde Gammelsæter
  * @link https://github.com/paalg/mappedlist
- * @version 0.1.2
+ * @version 1.0.0
  * @beta
  */
 class MList {
@@ -28,6 +28,13 @@ class MList {
      * The last index in arrays data and keys
      */
     private lastIndex:number = 0;
+
+    /**
+     * This is the id where the last found value was found by function
+     * getKey(). This value can be used to set an offset value when rerunning that
+     * function.
+     */
+    private lastFoundValueId = 0;
 
     /**
      * Add element to the list
@@ -60,6 +67,29 @@ class MList {
         }
         else {
             return this.data[id];
+        }
+    }
+
+    /**
+     * Look up the given value and return the key for it.
+     * @param value  A value to find in the list
+     * @param number From what element we start seraching, defaults to 0
+     *               which is the beginning of the list. If you set this to -1, then
+     *               the offset will be set to after the previous position when this function
+     *               was run and found a match.
+     * @return If value was not found, then "-1" is returned.
+     */
+    public getKey(value:string, offset:number=0):string {
+        if (offset===-1) {
+            offset = this.lastFoundValueId+1;
+        }
+        let id = this.data.indexOf(value, offset);
+        if (id===-1) {
+            return "-1";
+        }
+        else {
+            this.lastFoundValueId = id;
+            return this.keys[id];
         }
     }
 
