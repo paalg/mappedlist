@@ -43,4 +43,31 @@ test("has4", ()=>{
     expect(list.has("4")).toBe(false);
 });
 
-//
+// Test deleting
+test("length1", ()=>{
+    expect(list.length()).toBe(3)
+});
+test("delete1", ()=>{
+    expect(list.delete("2")).toBe(true);
+});
+// Now the list length is 3 after deletion
+test("length2", ()=>{
+    expect(list.length()).toBe(2);
+});
+test("delete2", ()=>{
+    expect(list.delete("1")).toBe(true);
+});
+// Test that last element key still is England
+test(
+    "get5", ()=>{
+        expect(list.get("3")).toBe("England")
+    }
+);
+test("delete3", ()=>{
+    expect(list.delete("3")).toBe(true);
+});
+
+test("length3", ()=>{
+    expect(list.length()).toBe(0);
+});
+
