@@ -9,8 +9,7 @@
  *
  * @author Pål Gjerde Gammelsæter
  * @link https://github.com/paalg/mappedlist
- * @version 1.0.0
- * @beta
+ * @version 1.1.0
  */
 class MList {
 
@@ -40,7 +39,7 @@ class MList {
      * Add element to the list
      * @param key
      * @param value
-     * @throws Error If you try to used a key that is already used
+     * @throws Error If you try to use a key that is already used
      */
     public add(key:string, value:string) {
         if (this.has(key)) {
@@ -73,7 +72,7 @@ class MList {
     /**
      * Look up the given value and return the key for it.
      * @param value  A value to find in the list
-     * @param number From what element we start seraching, defaults to 0
+     * @param offset From what element we start seraching, defaults to 0
      *               which is the beginning of the list. If you set this to -1, then
      *               the offset will be set to after the previous position when this function
      *               was run and found a match.
@@ -123,6 +122,15 @@ class MList {
      */
     public length():number {
         return this.data.length;
+    }
+
+    /**
+     * Delete all data in the list (empty)
+     */
+    public reset() {
+        this.keys = [];
+        this.data = [];
+        this.lastIndex = 0;
     }
 
 }

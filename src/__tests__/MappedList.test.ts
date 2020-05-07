@@ -8,6 +8,18 @@ list.add("1", "Israel");
 list.add("2", "Spain");
 list.add("3", "England");
 
+/**
+ * Populate the given list with data
+ */
+function populate() {
+    list.add("no", "Norway");
+    list.add("se", "Sweden");
+    list.add("nor", "Norway");
+    list.add("dk", "Denmark");
+    list.add("no_bm", "Norway");
+    list.add("il", "Israel");
+}
+
 // Test adding with key already used
 test("add3", ()=> {
     expect(()=>{
@@ -80,12 +92,7 @@ test("length3", ()=>{
 // Get first occurrence of Norway
 test("getkey1", ()=>{
     // Add new data first
-    list.add("no", "Norway");
-    list.add("se", "Sweden");
-    list.add("nor", "Norway");
-    list.add("dk", "Denmark");
-    list.add("no_bm", "Norway");
-    list.add("il", "Israel");
+    populate();
     expect(list.getKey("Norway")).toBe("no")
 });
 // Re-run will return same key
@@ -106,4 +113,13 @@ test("getkey5", ()=>{
 // Getting av value that does not exist will return "-1"
 test("getkey6", ()=>{
     expect(list.getKey("Great Britain")).toBe("-1")
+    list.reset(); // remove all data
+});
+
+// Test reset function
+test("reset1", ()=>{
+    // Make sure we have data populated
+    populate();   // populate with data
+    list.reset(); // Reset again to make sure there is no data and test shows length=0
+    expect(list.length()).toBe(0)
 });
