@@ -123,3 +123,13 @@ test("reset1", ()=>{
     list.reset(); // Reset again to make sure there is no data and test shows length=0
     expect(list.length()).toBe(0)
 });
+
+test("isEmpty1", ()=>{
+    populate();
+    expect(list.isEmpty()).toBe(false)
+});
+
+test("isEmpty2", ()=>{
+    list.reset();
+    expect(list.isEmpty()).toBe(true)
+});

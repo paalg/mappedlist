@@ -9,7 +9,7 @@
  *
  * @author Pål Gjerde Gammelsæter
  * @link https://github.com/paalg/mappedlist
- * @version 1.1.0
+ * @version 1.2.0
  */
 class MList {
 
@@ -131,6 +131,13 @@ class MList {
         this.keys = [];
         this.data = [];
         this.lastIndex = 0;
+    }
+
+    /**
+     * Is the list empty?
+     */
+    public isEmpty():boolean {
+        return this.data.length===0;
     }
 
 }
