@@ -4,7 +4,7 @@ A small and fast library for creating mapped lists like arrays in PHP.
 This class was created because I am very used to working with arrays in PHP, and 
 really missed the same structure in JavaScript/TypeScript.
 
-This library only supports string values for keys and values at the moment.
+This library only supports string as datatype for keys and values at the moment.
 
 ## Usage
 ```JavaScript
@@ -35,3 +35,8 @@ list.delete("es");
 console.log(list.length()); // outputs 3
 
 console.log(list.getKey("Norway")); // Outputs "no"
+```
+##Build
+If you need to include this library on you webpage, you can 
+build the javascript version by running the command "npm run build".
+

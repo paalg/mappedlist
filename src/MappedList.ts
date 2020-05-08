@@ -46,7 +46,7 @@ class MList {
             throw new Error("Key already exists");
         }
         else {
-            let id = this.lastIndex++;
+            const id = this.lastIndex++;
             this.data[id] = value;
             this.keys[id] = key;
         }
@@ -60,7 +60,7 @@ class MList {
      */
     public get(key:string):string {
         // Get first occurrence of key in the array
-        let id = this.keys.indexOf(key);
+        const id = this.keys.indexOf(key);
         if (id === -1) {
             throw new RangeError("Illegal key value");
         }
@@ -82,7 +82,7 @@ class MList {
         if (offset===-1) {
             offset = this.lastFoundValueId+1;
         }
-        let id = this.data.indexOf(value, offset);
+        const id = this.data.indexOf(value, offset);
         if (id===-1) {
             return "-1";
         }
@@ -99,7 +99,7 @@ class MList {
      */
     public delete(key:string):boolean {
         if (this.has(key)) {
-            let id = this.keys.indexOf(key);
+            const id = this.keys.indexOf(key);
             this.keys.splice(id, 1);
             this.data.splice(id, 1);
             return true;
@@ -113,7 +113,7 @@ class MList {
      * @return boolean
      */
     public has(key:string):boolean {
-        let id = this.keys.indexOf(key);
+        const id = this.keys.indexOf(key);
         return id !== -1; // if not -1, then true
     }
 
